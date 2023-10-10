@@ -1,8 +1,9 @@
-const inputFistName = document.querySelector("#input-firstname");
-const inputLastName = document.querySelector("#input-lastname");
-const inputUsername = document.querySelector("#input-username");
-const inputPassword = document.querySelector("#input-password");
-const inputPasswordConfirm = document.querySelector("#input-password-confirm");
+"use strict";
+export const inputFistName = document.querySelector("#input-firstname");
+export const inputLastName = document.querySelector("#input-lastname");
+export const inputUsername = document.querySelector("#input-username");
+export const inputPassword = document.querySelector("#input-password");
+export const inputPasswordConfirm = document.querySelector("#input-password-confirm");
 function getDataUser() {
   let firstName = inputFistName.value;
   let lastName = inputLastName.value;

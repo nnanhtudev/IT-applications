@@ -1,12 +1,19 @@
 "use strict";
-import getDataUser from "./getDataUser.js";
-import dataUser from "../../config/dataUser.js";
+import getInputRegisterUser from "./getInputUser.js";
+import { getInputLoginUser } from "./getInputUser.js";
+import registerUser from "./checkRegister.js";
 import clearInput from "./clearInput.js";
 import { userArr } from "../../config/dataUser.js";
 import { getFromStorage } from "../storage.js";
+import isUserTake from "./checkLogin.js";
+
+export function validateLoginUser() {
+  const formData = getInputLoginUser();
+  isUserTake(formData.username, formData.password);
+}
 
 function validateUser() {
-  const formData = getDataUser();
+  const formData = getInputRegisterUser();
   const usernameRegex = /^[a-zA-Z0-9][a-zA-Z0-9_]*[a-zA-Z0-9](?<![-?\d+\.?\d*$]{6,}.*)$/;
   if (
     (formData.firstName && formData.lastName && formData.username && formData.password && formData.passwordConfirm) ===
@@ -40,7 +47,7 @@ function validateUser() {
     return;
   }
   clearInput();
-  dataUser(formData);
+  registerUser(formData);
 }
 
 function isUsernameTaken(username) {

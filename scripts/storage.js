@@ -6,3 +6,7 @@ export function saveToStorage(key, value) {
 export function getFromStorage(key, defaultVal) {
   return localStorage.getItem(key) ?? defaultVal;
 }
+
+export function removeFromStorage(key) {
+  return localStorage.removeItem(key);
+}

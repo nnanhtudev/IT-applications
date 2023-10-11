@@ -1,5 +1,5 @@
 "use strict";
-import * as input from "./getDataUser.js";
+import * as input from "./getInputUser.js";
 
 function clearInput() {
   input.inputFistName.value = "";

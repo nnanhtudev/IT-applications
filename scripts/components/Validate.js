@@ -1,11 +1,11 @@
 "use strict";
 import getInputRegisterUser from "./getInputUser.js";
 import { getInputLoginUser } from "./getInputUser.js";
-import registerUser from "./checkRegister.js";
+import registerUser from "../../controllers/User/checkRegister.js";
 import clearInput from "./clearInput.js";
 import { userArr } from "../../config/dataUser.js";
 import { getFromStorage } from "../storage.js";
-import isUserTake from "./checkLogin.js";
+import isUserTake from "../../controllers/User/checkLogin.js";
 
 export function validateLoginUser() {
   const formData = getInputLoginUser();

@@ -1,6 +1,6 @@
 "use strict";
 import User from "../../models/User.js";
-import { getFromStorage, saveToStorage } from "../storage.js";
+import { getFromStorage, saveToStorage } from "../../scripts/storage.js";
 let userArr = getFromStorage("userArr") || [];
 function createNewUser(userData) {
   return new Promise((resolve, reject) => {

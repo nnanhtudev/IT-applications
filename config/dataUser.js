@@ -2,7 +2,7 @@
 
 import { getFromStorage } from "../scripts/storage.js";
 export let userArr = getFromStorage("userArr") || [];
-export let currentUser = getFromStorage("currentUser") || [];
-console.log("🚀 ~ file: dataUser.js:4 ~ userArr:", userArr);
+let currentUser = getFromStorage("currentUser") || [];
 
 // Hàm tạo một thể hiện User mới và thêm vào mảng người dùng
+export default currentUser;

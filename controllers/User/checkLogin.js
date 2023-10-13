@@ -1,6 +1,6 @@
 "use strict";
 import { getFromStorage, saveToStorage } from "../../scripts/storage.js";
-import { currentUser } from "../../config/dataUser.js";
+import currentUser from "../../config/dataUser.js";
 const isUserTake = function (usernameInput, passwordInput) {
   let user = getFromStorage("userArr");
   if (!Array.isArray(user)) {

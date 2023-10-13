@@ -1,6 +1,6 @@
 "use strict";
 import { getFromStorage, removeFromStorage } from "./storage.js";
-import { currentUser } from "../config/dataUser.js";
+import currentUser from "../config/dataUser.js";
 const mainContent = document.querySelector("#main-content");
 mainContent.style.display = "none";
 let currentUsers = getFromStorage("currentUser") || [];

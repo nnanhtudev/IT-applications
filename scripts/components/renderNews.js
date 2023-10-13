@@ -1,7 +1,23 @@
 "use strict";
-const renderNews = (newsArr) => {
+import getUrlAPI from "../../controllers/News/APIController.js";
+const btnNext = document.querySelector("#btn-next");
+const pageNum = document.querySelector("#page-num");
+const btnPrev = document.querySelector("#btn-prev");
+let page = 1;
+
+export const updatePagination = async () => {
+  const totalPage = await getUrlAPI(page);
+  totalPage.totalResults;
+  const currentPage = Math.ceil(totalPage.totalResults / 5);
+  console.log(page);
+  page >= currentPage ? (btnNext.style.display = "none") : (btnNext.style.display = "block");
+  page === 1 ? (btnPrev.style.display = "none") : (btnPrev.style.display = "block");
+};
+const renderNews = async () => {
+  const dataNews = await getUrlAPI(page);
+  console.log(dataNews);
   const newsContainer = document.querySelector("#news-container");
-  const html = newsArr[0].map(
+  const html = dataNews.articles.map(
     (item) => `
           <div class="card flex-row flex-wrap">
             <div class="card mb-3">
@@ -34,4 +50,21 @@ const renderNews = (newsArr) => {
   newsContainer.innerHTML = html.join("");
 };
 
+btnNext.addEventListener("click", function () {
+  if (page >= 1) {
+    page++;
+  }
+  pageNum.textContent = page;
+  updatePagination();
+  renderNews();
+});
+btnPrev.addEventListener("click", function () {
+  console.log("click success");
+  if (page !== 1) {
+    page--;
+  }
+  pageNum.textContent = page;
+  renderNews();
+  updatePagination();
+});
 export default renderNews;

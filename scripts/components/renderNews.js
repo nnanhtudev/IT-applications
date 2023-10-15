@@ -1,9 +1,9 @@
 "use strict";
 import getUrlAPI from "../../controllers/News/APIController.js";
+import { page } from "../../controllers/News/APIController.js";
 const btnNext = document.querySelector("#btn-next");
 const pageNum = document.querySelector("#page-num");
 const btnPrev = document.querySelector("#btn-prev");
-let page = 1;
 
 export const updatePagination = async () => {
   const totalPage = await getUrlAPI(page);
@@ -14,7 +14,7 @@ export const updatePagination = async () => {
   page === 1 ? (btnPrev.style.display = "none") : (btnPrev.style.display = "block");
 };
 const renderNews = async () => {
-  const dataNews = await getUrlAPI(page);
+  const dataNews = await getUrlAPI();
   console.log(dataNews);
   const newsContainer = document.querySelector("#news-container");
   const html = dataNews.articles.map(

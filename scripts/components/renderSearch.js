@@ -1,22 +1,26 @@
 "use strict";
-import { getUrlAPI } from "../../controllers/News/APIController.js";
+import { getUrlAPISearch } from "../../controllers/News/APIController.js";
+
 const btnNext = document.querySelector("#btn-next");
 const pageNum = document.querySelector("#page-num");
 const btnPrev = document.querySelector("#btn-prev");
-export let page = 1;
-export const updatePagination = async () => {
-  const totalPage = await getUrlAPI();
+
+export let pageSearch = 1;
+export const updatePaginationSearch = async () => {
+  const totalPage = await getUrlAPISearch(pageSearch);
   totalPage.totalResults;
   const currentPage = Math.ceil(totalPage.totalResults / 5);
-  page >= currentPage ? (btnNext.style.display = "none") : (btnNext.style.display = "block");
-  page === 1 ? (btnPrev.style.display = "none") : (btnPrev.style.display = "block");
+  console.log(pageSearch);
+  pageSearch >= currentPage ? (btnNext.style.display = "none") : (btnNext.style.display = "block");
+  pageSearch === 1 ? (btnPrev.style.display = "none") : (btnPrev.style.display = "block");
 };
-const renderNews = async () => {
-  const dataNews = await getUrlAPI();
-  const newsContainer = document.querySelector("#news-container");
-  const html = dataNews.articles.map(
+export const renderSearch = async () => {
+  const dataSearch = await getUrlAPISearch();
+  console.log(dataSearch);
+  const newsContainerSearch = document.querySelector("#news-container");
+  const html = dataSearch.articles.map(
     (item) => `
-          <div class="card flex-row flex-wrap">
+            <div class="card flex-row flex-wrap">
             <div class="card mb-3">
               <div class="row no-gutters">
                 <div class="col-md-4">
@@ -41,27 +45,27 @@ const renderNews = async () => {
                 </div>
               </div>
             </div>
-          </div>
-    `
+          </div>`
   );
-  newsContainer.innerHTML = html.join("");
+  newsContainerSearch.innerHTML = html.join("");
 };
 
 btnNext.addEventListener("click", function () {
-  if (page >= 1) {
-    page++;
+  if (pageSearch >= 1) {
+    pageSearch++;
   }
-  pageNum.textContent = page;
-  updatePagination();
-  renderNews();
+  pageNum.textContent = pageSearch;
+  updatePaginationSearch();
+  renderSearch();
 });
 btnPrev.addEventListener("click", function () {
   console.log("click success");
-  if (page !== 1) {
-    page--;
+  if (pageSearch !== 1) {
+    pageSearch--;
   }
-  pageNum.textContent = page;
-  renderNews();
-  updatePagination();
+  pageNum.textContent = pageSearch;
+  renderSearch();
+  updatePaginationSearch();
 });
-export default renderNews;
+
+export default renderSearch;

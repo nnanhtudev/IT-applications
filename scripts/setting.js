@@ -1,5 +1,5 @@
 "use strict";
-import validateValueInput from "../controllers/Setting/getInput.js";
+import validateValueInput from "../controllers/Setting/settingController.js";
 
 const btnSaveSetting = document.querySelector("#btn-submit");
 

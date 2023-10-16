@@ -9,7 +9,6 @@ let setting = getFromStorage("setting") || [];
     try {
       let storeSettings = JSON.parse(setting);
       setting = storeSettings;
-      console.log(setting);
     } catch (e) {
       console.log("Setting parsing error", e);
     }
